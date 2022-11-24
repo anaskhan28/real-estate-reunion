@@ -37,8 +37,79 @@ const HouseContextProvider = ({children}) => {
   }, [houses]);
   
   const handleClick = () =>{
-    console.log('clicked');
-  }
+  setLoading(true);
+
+    //  function to check if the string is includes "any"
+    const isDefault = (str) =>{
+      return str.split(' ').includes('(any)');
+    };
+    // initial value to integer
+    const minPrice = parseInt(price.split(' ')[0]);
+    
+    // second value to integer
+    const maxPrice = parseInt(price.split(' ')[2]);
+    
+    const newHouses = housesData.filter((house)=>{
+      const housePrice = parseInt(house.price);
+
+      if(
+        house.country === country && 
+        house.type === property &&
+        housePrice>= minPrice && 
+        housePrice<=maxPrice
+      ){
+        return house;
+      }
+    //  if country all are defaullt
+     if(isDefault(country) && isDefault(property)
+     && isDefault(price)){
+      return house;
+     }
+      // if country is not default
+      if(!isDefault(country) && isDefault(property)
+      && isDefault(price)){
+        return house.country === country;
+      }
+     
+      // if property is not default
+      if(!isDefault(property) && isDefault(country)
+      && isDefault(price)){
+        return house.type === property;
+      }
+      // if price is not default
+      if(!isDefault(price)&& isDefault(country)
+      && isDefault(property)){
+        if(housePrice>=minPrice && housePrice<=maxPrice){
+            return house;
+        }
+      }
+      // if country and price is not default
+      if(!isDefault(country) && !isDefault(property)
+      && isDefault(price)){
+        return house.country === country && house.type === property;
+      }
+
+      // if country and price is not default
+      if(!isDefault(country) && !isDefault(price)
+      && isDefault(property)){
+        if(housePrice >=minPrice && housePrice<= maxPrice){
+          return house.country === country;
+        }
+      }
+      //  property and price is not default
+      if(!isDefault(property) && !isDefault(price)
+      && !isDefault(country)){
+        if(housePrice>= minPrice && housePrice<=maxPrice)
+     {
+        return house.type === property;
+      }
+    }
+
+    });
+    setTimeout(()=>{
+      return newHouses.length<1 ? setHouses([])
+    })
+  };
 
   return <HouseContext.Provider 
   value={{
