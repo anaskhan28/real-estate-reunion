@@ -13,7 +13,7 @@ const House = ({house}) => {
       text-white px-3'>{type}</div>
       <div className='bg-violet-500 rounded-full 
         px-3  text-white'>{country}</div>
-      
+    
     </div>
     <div className='text-lg font-semibold max-w-[260px]'>{address}</div>
     <div className='flex gap-x-4 my-4'>
