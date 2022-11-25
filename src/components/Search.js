@@ -5,6 +5,7 @@ import PriceRangeDropdown from './PriceRangeDropdown';
 import { HouseContext } from './HouseContext';
 // icons
 import {RiSearch2Line} from 'react-icons/ri'
+import DateDropdown from './DateDropdown';
 
 
 const Search = () => {
@@ -18,11 +19,12 @@ const Search = () => {
   lg:bg-transparent lg:backdrop-blur rounded-lg">
     <CountryDropdown/>
     <PropertyDropdown/>
+    <DateDropdown/>
     <PriceRangeDropdown/>
     <button
     onClick={()=> handleClick()}
     className='bg-violet-700 hover:bg-violet-800 
-    transition w-full lg:max-w-[162px] h-16 rounded-lg flex justify-center
+    transition w-full lg:max-w-[100px] h-16 rounded-lg flex justify-center
     items-center text-white text-lg'>
       <RiSearch2Line/>
     </button>

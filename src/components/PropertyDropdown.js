@@ -1,4 +1,4 @@
-import React,{useState, useEffect, useContext} from 'react';
+import React,{useState,useContext} from 'react';
 
 // icons
 import {RiHome5Line, RiArrowDownSLine, RiArrowUpSLine} from 'react-icons/ri';
