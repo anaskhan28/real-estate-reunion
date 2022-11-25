@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {BiBed, BiBath,BiArea} from 'react-icons/bi';
-
+import {RiHeart2Line, RiHeart2Fill} from 'react-icons/ri';
 const House = ({house}) => {
   const {image, type, country,address, bedrooms, bathrooms, 
-  surface, price} = house;
+  surface, price, availableFrom} = house;
+  const [like, setLike] = useState(false);
+  
+
   return <div className='bg-white shadow-1 p-5 rounded-lg
-  rounded-tl-[90px] w-full max-w-[352px] mx-auto cursor-pointer
+  rounded-tl-[90px] w-full max-w-[500px] mx-auto cursor-pointer
   hover:shadow-2xl transition'>
     <img className="mb-8" src={image}alt=''/>
     <div className='mb-4 flex gap-x-2 text-sm'>
@@ -41,6 +44,9 @@ const House = ({house}) => {
     </div>
     <div className='text-lg font-semibold text-violet-600
     mb-4'>{price}</div>
+    <div className=' text-gray-600 gap-1
+    mb-4'>Date: {availableFrom}</div>
+    <span onClick={()=> setLike((prevState) =>!prevState)} className=' flex justify-end text-xl text-primary'>{like? <RiHeart2Fill/>: <RiHeart2Line/>}</span>
   </div>
 };
 

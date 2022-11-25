@@ -135,6 +135,22 @@ const HouseContextProvider = ({children}) => {
       }
       
     }
+    //  property and date is not default
+    if(!isDefault(property) && isDefault(price)
+    && isDefault(country) && !isDefault(date)){
+      return house.type === property && house.availableFrom === date;
+    
+    
+  }
+  //  date, price and country is not default
+  if(isDefault(property) && !isDefault(price)
+  && !isDefault(country) && !isDefault(date)){
+    if(housePrice>= minPrice && housePrice<=maxPrice)
+ {
+    return house.country === country && house.availableFrom === date;
+  }
+  
+}
 
     });
 

@@ -6,11 +6,12 @@ import Home from './pages/Home';
 
 const App = () => {
   return( 
-  <div className ="max-w-[1440px] mx-auto bg-white">
+  <div className ="min-h-[100vh] mx-auto bg-white">
     <Header/>
     <Home/>
   </div>
   );
 };
+
 
 export default App;
